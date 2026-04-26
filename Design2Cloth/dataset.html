@@ -34,8 +34,9 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">DigitalMe: A Large-Scale Real-World 3D Garment Dataset</h1>       
-
+          <h1 class="title is-1 publication-title">
+            DigitalMe: A Large-Scale Real-World 3D Garment Dataset
+          </h1>
         </div>
       </div>
     </div>
@@ -43,146 +44,109 @@
 </section>
 
 <section class="section">
-  <div class="container is-max-desktop">
+  <div class="container is-max-desktop content">
 
-    <!-- Overview -->
-    
-      <div class="column is-full-width">
-        <h2 class="title is-3">Overview</h2>
-        <div class="content has-text-justified">
-          <p>
-            <strong>DigitalMe</strong> is a large-scale real-world 3D garment dataset introduced for realistic garment modelling, reconstruction, and generation. 
-            The dataset consists of high-resolution 3D garment meshes extracted from clothed human scans and is used to train <strong>Design2Cloth</strong>, 
-            a 3D garment generative model that produces detailed garments from simple 2D visibility masks.
-          </p>
-          <p>
-            DigitalMe is designed to address the limitations of synthetic or small-scale
-            garment datasets by providing real-world clothing geometry with realistic
-            wrinkles, folds, and fabric deformations.
-          </p>
-        </div>
-      </div>
-    </div>
-        
-    <!-- Key Features -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Key Features</h2>
-        <div class="content has-text-justified">
-          <ul>
-            <li>More than 2,000 garments across 31 categories</li>
-            <li>Garments extracted from scans of 2,010 individuals</li>
-            <li>High-resolution garment meshes derived from real-world 3D captures</li>
-            <li>Canonicalised garment representation (T-pose) for consistent modelling</li>
-            <li>Diverse garment styles covering everyday clothing categories</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <h2 class="title is-3">Overview</h2>
+    <p>
+      <strong>DigitalMe</strong> is a large-scale real-world 3D garment dataset
+      introduced for realistic garment modelling, reconstruction, and generation.
+      The dataset consists of high-resolution 3D garment meshes extracted from
+      clothed human scans and is used to train <strong>Design2Cloth</strong>, a
+      3D garment generative model that produces detailed garments from simple 2D
+      visibility masks.
+    </p>
 
-<h2 class="title is-3">Metadata</h2>
-<div class="content has-text-justified">
-  <p>
-    Each released garment sample is accompanied by the corresponding SMPL
-    parameter file saved in <code>.npy</code> format. These parameters provide
-    the associated body shape information used for garment alignment and canonicalisation.
-  </p>
+    <p>
+      DigitalMe is designed to address the limitations of synthetic or small-scale
+      garment datasets by providing real-world clothing geometry with realistic
+      wrinkles, folds, and fabric deformations.
+    </p>
 
-  <ul>
-    <li>3D garment mesh for each clothing item</li>
-    <li>Corresponding SMPL parameters stored as <code>.npy</code> files</li>
-  </ul>
+    <h2 class="title is-3">Key Features</h2>
+    <ul>
+      <li>More than 2,000 garments across 31 categories</li>
+      <li>Garments extracted from scans of 2,010 individuals</li>
+      <li>High-resolution garment meshes derived from real-world 3D captures</li>
+      <li>Canonicalised garment representation (T-pose) for consistent modelling</li>
+      <li>Diverse garment styles covering everyday clothing categories</li>
+    </ul>
 
-  <p>
-    The current release focuses on 3D garment geometry and associated body shape
-    parameters. 2D masks, rendered-view annotations, and texture maps are not
-    included in this release.
-  </p>
-</div>
+    <h2 class="title is-3">Metadata</h2>
+    <p>
+      Each released garment sample is accompanied by the corresponding SMPL
+      parameter file saved in <code>.npy</code> format. These parameters provide
+      the associated body shape information used for garment alignment and
+      canonicalisation.
+    </p>
+
+    <ul>
+      <li>3D garment mesh for each clothing item</li>
+      <li>Corresponding SMPL parameters stored as <code>.npy</code> files</li>
+    </ul>
+
+    <p>
+      The current release focuses on 3D garment geometry and associated body shape
+      parameters. 2D masks, rendered-view annotations, and texture maps are not
+      included in this release.
+    </p>
 
     <h2 class="title is-3">Data Structure</h2>
-<div class="content has-text-justified">
-
-  <p>
-    The dataset is organised in a simple flat structure, where each garment mesh
-    is associated with a corresponding SMPL parameter file. The SMPL parameters
-    are stored separately and share the same file naming convention as the mesh.
-  </p>
-
-  <pre><code>D2C_Dataset/
-    mesh1.obj
-    mesh2.obj
-    ...
-    meshn.obj
-
-    shape_params/
-        mesh1.npy
-        mesh2.npy
-        ...
-        meshn.npy
-</code></pre>
-
-  <p>
-    Each <code>.obj</code> file represents a 3D garment mesh, while the corresponding
-    <code>.npy</code> file contains the SMPL parameters associated with that garment.
-    Files are matched by filename (e.g., <code>mesh1.obj</code> corresponds to
-    <code>mesh1.npy</code>).
-  </p>
-
-</div>
-
-    <!-- Usage Examples -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Usage Examples</h2>
-        <div class="content has-text-justified">
-          <p>
-            Garment meshes can be loaded using standard mesh processing libraries such
-            as <code>trimesh</code>.
-          </p>
-
-          <pre><code>import trimesh
-
-mesh = trimesh.load("path/to/mesh.obj")
-mesh.show()
-</code></pre>
-
-          
-
-   <h2 class="title is-3">Recommended Evaluation Protocol</h2>
-<div class="content has-text-justified">
-  <p>
-    The current dataset release does not include an official train/test split.
-    For reproducible comparison, users are encouraged to define and report a
-    fixed split when using DigitalMe for garment reconstruction or generation.
-  </p>
-
-  <h3 class="title is-4">Suggested Split Strategy</h3>
-  <ul>
-    <li>Use a fixed training and test split and report the exact file list used.</li>
-    <li>Where possible, ensure that visually similar garments are not duplicated across training and test sets.</li>
-    <li>Use the same held-out test set when comparing multiple methods.</li>
-  </ul>
-
-  <h3 class="title is-4">Metrics</h3>
-  <ul>
-    <li><strong>Chamfer Distance (CD):</strong> evaluates geometric reconstruction error.</li>
-    <li><strong>Normal Consistency (NC):</strong> evaluates agreement between predicted and ground-truth surface normals.</li>
-  </ul>
-
-  <h3 class="title is-4">Evaluation Setup</h3>
-  <ul>
-    <li>Evaluate garments in canonical space.</li>
-    <li>Uniformly sample surface points from predicted and ground-truth meshes.</li>
-    <li>Use the same number of sampled points for all compared methods.</li>
-    
-  <h3 class="title is-4">Example Evaluation Code</h3>
     <p>
-  The following example illustrates how to load two garment meshes, sample surface
-  points, and compute Chamfer Distance and Normal Consistency.
-</p>
+      The dataset is organised in a simple flat structure, where each garment mesh
+      is associated with a corresponding SMPL parameter file. The SMPL parameters
+      are stored separately and share the same file naming convention as the mesh.
+    </p>
 
-<pre><code class="language-python">import trimesh
+    <pre><code>mainfolder/
+  mesh1.obj
+  mesh2.obj
+  ...
+  meshn.obj
+
+  smpl_params/
+    mesh1.npy
+    mesh2.npy
+    ...
+    meshn.npy
+</code></pre>
+
+    <p>
+      Each <code>.obj</code> file represents a 3D garment mesh, while the
+      corresponding <code>.npy</code> file contains the SMPL parameters associated
+      with that garment. Files are matched by filename, for example
+      <code>mesh1.obj</code> corresponds to <code>mesh1.npy</code>.
+    </p>
+
+    <h2 class="title is-3">Recommended Evaluation Protocol</h2>
+    <p>
+      The current dataset release does not include an official train/test split.
+      For reproducible comparison, users are encouraged to define and report a
+      fixed split when using DigitalMe for garment reconstruction or generation.
+    </p>
+
+    <h3 class="title is-4">Suggested Split Strategy</h3>
+    <ul>
+      <li>Use a fixed training and test split and report the exact file list used.</li>
+      <li>Where possible, ensure that visually similar garments are not duplicated across training and test sets.</li>
+      <li>Use the same held-out test set when comparing multiple methods.</li>
+    </ul>
+
+    <h3 class="title is-4">Metrics</h3>
+    <ul>
+      <li><strong>Chamfer Distance (CD):</strong> evaluates geometric reconstruction error.</li>
+      <li><strong>Normal Consistency (NC):</strong> evaluates agreement between predicted and ground-truth surface normals.</li>
+    </ul>
+
+    <h3 class="title is-4">Evaluation Setup</h3>
+    <ul>
+      <li>Evaluate garments in canonical space.</li>
+      <li>Uniformly sample surface points from predicted and ground-truth meshes.</li>
+      <li>Use the same number of sampled points for all compared methods.</li>
+      <li>Report the sampling resolution and evaluation settings clearly.</li>
+    </ul>
+
+    <h3 class="title is-4">Example Evaluation Code</h3>
+    <pre><code>import trimesh
 import numpy as np
 from scipy.spatial import cKDTree
 
@@ -207,16 +171,13 @@ def chamfer_distance(points_pred, points_gt):
 def normal_consistency(points_pred, normals_pred, points_gt, normals_gt):
     tree_gt = cKDTree(points_gt)
     _, idx_pred_to_gt = tree_gt.query(points_pred)
-
     matched_normals_gt = normals_gt[idx_pred_to_gt]
     consistency = np.abs(np.sum(normals_pred * matched_normals_gt, axis=1))
-
     return consistency.mean()
 
 
-# Example usage
-pred_points, pred_normals = sample_mesh("predicted.obj", n_points=10000)
-gt_points, gt_normals = sample_mesh("ground_truth.obj", n_points=10000)
+pred_points, pred_normals = sample_mesh("predicted.obj")
+gt_points, gt_normals = sample_mesh("ground_truth.obj")
 
 cd = chamfer_distance(pred_points, gt_points)
 nc = normal_consistency(pred_points, pred_normals, gt_points, gt_normals)
@@ -225,15 +186,12 @@ print("Chamfer Distance:", cd)
 print("Normal Consistency:", nc)
 </code></pre>
 
-  </ul>
-
-  <h3 class="title is-4">Possible Benchmark Tasks</h3>
-  <ol>
-    <li>3D garment generation from latent representations.</li>
-    <li>3D garment reconstruction from user-provided 2D masks.</li>
-    <li>Interpolation between garment styles and shapes.</li>
-  </ol>
-</div>
+    <h3 class="title is-4">Possible Benchmark Tasks</h3>
+    <ol>
+      <li>3D garment generation from latent representations</li>
+      <li>3D garment reconstruction from user-provided 2D masks</li>
+      <li>Interpolation between garment styles and shapes</li>
+    </ol>
 
     <!-- Download -->
     <div class="columns is-centered has-text-centered">
