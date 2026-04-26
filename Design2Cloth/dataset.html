@@ -169,7 +169,54 @@ mesh.show()
     <li>Evaluate garments in canonical space.</li>
     <li>Uniformly sample surface points from predicted and ground-truth meshes.</li>
     <li>Use the same number of sampled points for all compared methods.</li>
-    <li>Report the sampling resolution and evaluation settings clearly.</li>
+    <p>
+  The following example illustrates how to load two garment meshes, sample surface
+  points, and compute Chamfer Distance and Normal Consistency.
+</p>
+
+<pre><code class="language-python">import trimesh
+import numpy as np
+from scipy.spatial import cKDTree
+
+
+def sample_mesh(mesh_path, n_points=10000):
+    mesh = trimesh.load(mesh_path, process=False)
+    points, face_idx = trimesh.sample.sample_surface(mesh, n_points)
+    normals = mesh.face_normals[face_idx]
+    return points, normals
+
+
+def chamfer_distance(points_pred, points_gt):
+    tree_gt = cKDTree(points_gt)
+    tree_pred = cKDTree(points_pred)
+
+    dist_pred_to_gt, _ = tree_gt.query(points_pred)
+    dist_gt_to_pred, _ = tree_pred.query(points_gt)
+
+    return dist_pred_to_gt.mean() + dist_gt_to_pred.mean()
+
+
+def normal_consistency(points_pred, normals_pred, points_gt, normals_gt):
+    tree_gt = cKDTree(points_gt)
+    _, idx_pred_to_gt = tree_gt.query(points_pred)
+
+    matched_normals_gt = normals_gt[idx_pred_to_gt]
+    consistency = np.abs(np.sum(normals_pred * matched_normals_gt, axis=1))
+
+    return consistency.mean()
+
+
+# Example usage
+pred_points, pred_normals = sample_mesh("predicted.obj", n_points=10000)
+gt_points, gt_normals = sample_mesh("ground_truth.obj", n_points=10000)
+
+cd = chamfer_distance(pred_points, gt_points)
+nc = normal_consistency(pred_points, pred_normals, gt_points, gt_normals)
+
+print("Chamfer Distance:", cd)
+print("Normal Consistency:", nc)
+</code></pre>
+
   </ul>
 
   <h3 class="title is-4">Possible Benchmark Tasks</h3>
