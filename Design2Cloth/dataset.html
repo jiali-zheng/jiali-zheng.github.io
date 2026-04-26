@@ -103,13 +103,13 @@
     are stored separately and share the same file naming convention as the mesh.
   </p>
 
-  <pre><code>mainfolder/
+  <pre><code>D2C_Dataset/
     mesh1.obj
     mesh2.obj
     ...
     meshn.obj
 
-    smpl_params/
+    shape_params/
         mesh1.npy
         mesh2.npy
         ...
@@ -141,21 +141,7 @@ mesh = trimesh.load("path/to/mesh.obj")
 mesh.show()
 </code></pre>
 
-          <p>
-            Visibility masks can be loaded as standard image files.
-          </p>
-
-          <pre><code>from PIL import Image
-import matplotlib.pyplot as plt
-
-mask = Image.open("path/to/mask.png")
-plt.imshow(mask, cmap="gray")
-plt.axis("off")
-plt.show()
-</code></pre>
-        </div>
-      </div>
-    </div>
+          
 
     <!-- Evaluation Protocol -->
     <div class="columns is-centered has-text-centered">
