@@ -79,17 +79,16 @@
   <p>
     Each released garment sample is accompanied by the corresponding SMPL
     parameter file saved in <code>.npy</code> format. These parameters provide
-    the associated body information used for garment alignment and canonicalisation.
+    the associated body shape information used for garment alignment and canonicalisation.
   </p>
 
   <ul>
     <li>3D garment mesh for each clothing item</li>
     <li>Corresponding SMPL parameters stored as <code>.npy</code> files</li>
-    <li>Canonical T-pose garment representation for consistent modelling and evaluation</li>
   </ul>
 
   <p>
-    The current release focuses on 3D garment geometry and associated body
+    The current release focuses on 3D garment geometry and associated body shape
     parameters. 2D masks, rendered-view annotations, and texture maps are not
     included in this release.
   </p>
@@ -101,26 +100,18 @@
         <h2 class="title is-3">Data Format</h2>
         <div class="content has-text-justified">
           <p>
-            Each sample may include the following data:
+            Each sample include the following data:
           </p>
           <ul>
-            <li>3D garment mesh, e.g. <code>.obj</code> or <code>.ply</code></li>
-            <li>SMPL body parameters, e.g. <code>.pkl</code></li>
-            <li>2D visibility masks, e.g. <code>.png</code></li>
-            <li>Optional rendered views for visualisation and evaluation</li>
+            <li>3D garment mesh, in <code>.obj</code> format </li>
+            <li>SMPL body parameters, in <code>.npy</code> format</li>
           </ul>
 
           <pre><code>DigitalMe/
-  subject_id/
-    garment_id/
-      mesh.obj
-      smpl.pkl
-      masks/
-        view_01.png
-        view_02.png
-      renders/
-        view_01.png
-        view_02.png
+  mesh1.obj
+  mesh2.obj
+
+
 </code></pre>
         </div>
       </div>
