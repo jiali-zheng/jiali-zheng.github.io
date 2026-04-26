@@ -143,71 +143,42 @@ mesh.show()
 
           
 
-    <!-- Evaluation Protocol -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Recommended Evaluation Protocol</h2>
-        <div class="content has-text-justified">
-          <p>
-            To support reproducible comparison, we recommend evaluating garment
-            reconstruction and generation methods using a standardised protocol.
-          </p>
+   <h2 class="title is-3">Recommended Evaluation Protocol</h2>
+<div class="content has-text-justified">
+  <p>
+    The current dataset release does not include an official train/test split.
+    For reproducible comparison, users are encouraged to define and report a
+    fixed split when using DigitalMe for garment reconstruction or generation.
+  </p>
 
-          <h3 class="title is-4">Train / Test Split</h3>
-          <ul>
-            <li>Use a fixed training and test split.</li>
-            <li>Perform splitting at the subject level where possible to avoid identity leakage.</li>
-            <li>Report results on the same held-out test set for fair comparison.</li>
-          </ul>
+  <h3 class="title is-4">Suggested Split Strategy</h3>
+  <ul>
+    <li>Use a fixed training and test split and report the exact file list used.</li>
+    <li>Where possible, ensure that visually similar garments are not duplicated across training and test sets.</li>
+    <li>Use the same held-out test set when comparing multiple methods.</li>
+  </ul>
 
-          <h3 class="title is-4">Metrics</h3>
-          <ul>
-            <li><strong>Chamfer Distance (CD):</strong> evaluates geometric reconstruction error.</li>
-            <li><strong>Normal Consistency (NC):</strong> evaluates agreement between predicted and ground-truth surface normals.</li>
-          </ul>
+  <h3 class="title is-4">Metrics</h3>
+  <ul>
+    <li><strong>Chamfer Distance (CD):</strong> evaluates geometric reconstruction error.</li>
+    <li><strong>Normal Consistency (NC):</strong> evaluates agreement between predicted and ground-truth surface normals.</li>
+  </ul>
 
-          <h3 class="title is-4">Evaluation Setup</h3>
-          <ul>
-            <li>Evaluate garments in canonical space.</li>
-            <li>Uniformly sample surface points from predicted and ground-truth meshes.</li>
-            <li>Use the same number of sampled points for all compared methods.</li>
-            <li>Report results separately for reconstruction, generation, and interpolation tasks where applicable.</li>
-          </ul>
+  <h3 class="title is-4">Evaluation Setup</h3>
+  <ul>
+    <li>Evaluate garments in canonical space.</li>
+    <li>Uniformly sample surface points from predicted and ground-truth meshes.</li>
+    <li>Use the same number of sampled points for all compared methods.</li>
+    <li>Report the sampling resolution and evaluation settings clearly.</li>
+  </ul>
 
-          <h3 class="title is-4">Benchmark Tasks</h3>
-          <ol>
-            <li>3D garment reconstruction from 2D masks</li>
-            <li>3D garment generation from latent space</li>
-            <li>Interpolation between garment styles and shapes</li>
-            <li>In-the-wild garment reconstruction from image-derived masks</li>
-          </ol>
-        </div>
-      </div>
-    </div>
-
-    <!-- Known Limitations -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Known Limitations</h2>
-        <div class="content has-text-justified">
-          <p>
-            Although DigitalMe provides large-scale real-world 3D garment data, several
-            limitations should be considered when using the dataset.
-          </p>
-          <ul>
-            <li>The category distribution is non-uniform and reflects real-world collection conditions.</li>
-            <li>Everyday and winter garments are more strongly represented than rare, formal, or highly fashion-specific clothing.</li>
-            <li>Some garment categories, such as asymmetric designs, cut-out garments, long gowns, and thin-strap clothing, are underrepresented.</li>
-            <li>Some scans may contain minor reconstruction artifacts due to the acquisition and processing pipeline.</li>
-          </ul>
-          <p>
-            These factors may affect model generalisation, particularly for
-            out-of-distribution garment types. Results on rare or underrepresented
-            garments should therefore be interpreted with this distributional bias in mind.
-          </p>
-        </div>
-      </div>
-    </div>
+  <h3 class="title is-4">Possible Benchmark Tasks</h3>
+  <ol>
+    <li>3D garment generation from latent representations.</li>
+    <li>3D garment reconstruction from user-provided 2D masks.</li>
+    <li>Interpolation between garment styles and shapes.</li>
+  </ol>
+</div>
 
     <!-- Download -->
     <div class="columns is-centered has-text-centered">
@@ -221,7 +192,7 @@ mesh.show()
           </p>
           <ul>
             <li>Download link: <a href="#">[Add dataset link]</a></li>
-            <li>Access request: <a href="mailto:jiali.zheng@example.com">[Add email address]</a></li>
+            
           </ul>
         </div>
       </div>
