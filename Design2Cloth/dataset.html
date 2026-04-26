@@ -94,28 +94,36 @@
   </p>
 </div>
 
-    <!-- Data Format -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Data Format</h2>
-        <div class="content has-text-justified">
-          <p>
-            Each sample include the following data:
-          </p>
-          <ul>
-            <li>3D garment mesh, in <code>.obj</code> format </li>
-            <li>SMPL body parameters, in <code>.npy</code> format</li>
-          </ul>
+    <h2 class="title is-3">Data Structure</h2>
+<div class="content has-text-justified">
 
-          <pre><code>DigitalMe/
-  mesh1.obj
-  mesh2.obj
+  <p>
+    The dataset is organised in a simple flat structure, where each garment mesh
+    is associated with a corresponding SMPL parameter file. The SMPL parameters
+    are stored separately and share the same file naming convention as the mesh.
+  </p>
 
+  <pre><code>mainfolder/
+    mesh1.obj
+    mesh2.obj
+    ...
+    meshn.obj
 
+    smpl_params/
+        mesh1.npy
+        mesh2.npy
+        ...
+        meshn.npy
 </code></pre>
-        </div>
-      </div>
-    </div>
+
+  <p>
+    Each <code>.obj</code> file represents a 3D garment mesh, while the corresponding
+    <code>.npy</code> file contains the SMPL parameters associated with that garment.
+    Files are matched by filename (e.g., <code>mesh1.obj</code> corresponds to
+    <code>mesh1.npy</code>).
+  </p>
+
+</div>
 
     <!-- Usage Examples -->
     <div class="columns is-centered has-text-centered">
