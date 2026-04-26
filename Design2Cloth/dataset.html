@@ -74,32 +74,26 @@
       </div>
     </div>
 
-    <!-- Dataset Statistics -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Dataset Statistics</h2>
-        <div class="content has-text-justified">
-          <p>
-            DigitalMe contains garments from 31 categories, including T-shirts, shirts,
-            blouses, hoodies, trousers, skirts, dresses, jackets, coats, sweaters, and
-            other everyday garment types.
-          </p>
-          <p>
-            The dataset follows a realistic, non-uniform distribution across garment
-            categories. Frequently worn garments such as sweaters, hoodies, and
-            short-sleeve T-shirts are more strongly represented, while less common
-            categories such as asymmetric garments, long dresses, gowns, and highly
-            fashion-specific garments are underrepresented.
-          </p>
-          <p>
-            The data was primarily collected during colder seasons, which introduces a
-            seasonal bias toward winter and layered clothing. This improves the realism
-            of the collected data but should be considered when evaluating performance
-            on rare, summer-specific, or formal garments.
-          </p>
-        </div>
-      </div>
-    </div>
+<h2 class="title is-3">Metadata</h2>
+<div class="content has-text-justified">
+  <p>
+    Each released garment sample is accompanied by the corresponding SMPL
+    parameter file saved in <code>.npy</code> format. These parameters provide
+    the associated body information used for garment alignment and canonicalisation.
+  </p>
+
+  <ul>
+    <li>3D garment mesh for each clothing item</li>
+    <li>Corresponding SMPL parameters stored as <code>.npy</code> files</li>
+    <li>Canonical T-pose garment representation for consistent modelling and evaluation</li>
+  </ul>
+
+  <p>
+    The current release focuses on 3D garment geometry and associated body
+    parameters. 2D masks, rendered-view annotations, and texture maps are not
+    included in this release.
+  </p>
+</div>
 
     <!-- Data Format -->
     <div class="columns is-centered has-text-centered">
